@@ -2,45 +2,54 @@
 # him the possibility to choose between computing the sum and computing the product of 1,…,n.
 
 puts "Please choose a number"
-input = gets.chomp
-@n = input.to_i
-puts "You chose number #{@n}"
+@number = gets.chomp.to_i
+puts "You chose number #{@number}"
 
-puts "Do you want to calculate the sum of all the numbers from 0 to #{@n}? 
-Or do you want the product of all the numbers from 0 to #{@n}?"
+puts "Do you want to calculate the sum of all the numbers from 0 to #{@number}? 
+Or do you want the product of all the numbers from 0 to #{@number}?"
+
+# def sum
+# 	sum = 0
+# 	turn = 0
+# 	(1..@number).each do |number|
+# 		turn += 1
+# 		sum = sum + turn
+# 	end
+# 	return sum
+# end
+
+# def sum
+# 	(1..@number).inject { |manipulated, object| manipulated + object }
+# end
 
 def sum
-	turn = 0
-	sum = 0
-	(1..@n).each do |number| # @n war string befor ich es zu i machte! deswegen error!
-		turn += 1 #Zähler, der immer um 1 größer wird. wie wäre es, wenn keine range sondern array mit gemischten Zahlen?
-		sum = sum + turn # recursion?
-	end
-	return sum
+	(1..@number).inject(:+)
 end
 
+
 # def product
-# 	(1..@n).inject { |result, element| result * element }
-# 	# (1..@n).inject(:*)
+# 	(1..@number).inject { |result, element| result * element }
+# end
+
+# def product
+# 	(1..@number).inject(:*)
 # end
 
 
 def factorial(n)
 	puts "calling factorial with #{n}"
-	if n == 0 #wenn bei 0 angekommen wird 1 gesetzt
+	if n == 0 #wenn bei 0 angekommen wird 1 gesetzt, Abbruchbedingung
 		puts 'n == 0'
 		1
 	else
-		puts n
-		return_value = n * factorial(n - 1)
-		return_value
+		n * factorial(n - 1)
 	end
 end
 
-	answer = gets.chomp
-	if answer == "sum"
-		puts "The sum is #{sum}"
-	else 
-		#puts "The product is #{product}"
-		puts "The product is #{factorial(@n)}"
-	end
+answer = gets.chomp
+if answer == "sum"
+	puts "The sum is #{sum}"
+else 
+	#puts "The product is #{product}"
+	puts "The product is #{factorial(@number)}"
+end

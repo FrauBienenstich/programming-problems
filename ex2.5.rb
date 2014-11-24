@@ -1,14 +1,11 @@
 #2.5. Write a function that computes the running total of a list.
-list = [1, 2, 3, 4 ]
+
+list = [2, 2, 4, 2]
 
 def running_total(array)
-
-  #array.inject(:+) same same?
-
-   value = array.inject { |acc, n| acc + n}
-   puts value
-
-
+  #total = array.inject {|memo, obj| memo + obj}
+  total = array.inject(:+)
+  puts total
 end
 
 running_total(list)
